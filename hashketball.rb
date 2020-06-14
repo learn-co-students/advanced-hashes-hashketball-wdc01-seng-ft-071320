@@ -127,3 +127,97 @@ def game_hash
 end
 
 # Write code here
+
+def num_points_scored(player_name)
+  game_hash.each do | home_or_away, team_information |
+    team_information[:players].each do | player_list |
+      if player_name == player_list[:player_name]
+        return player_list[:points]
+      end
+    end
+  end
+end
+
+
+def shoe_size(player_name)
+  game_hash.each do | home_or_away, team_value |
+    team_value.each do | team_info, team_information |
+      if team_info == :players
+        team_information.each do | player |
+          return player[:shoe] if player[:player_name] == player_name
+        end
+      end
+    end
+  end
+end
+
+
+def team_colors(team_name)
+  game_hash.each do | home_or_away, team_value |
+    if team_value[:team_name] == team_name
+      return team_value[:colors]
+    end
+  end
+end
+
+
+def team_names
+  team_names = []
+  game_hash.each do | home_or_away, team_value |
+    team_names.push(team_value[:team_name])
+  end
+  team_names
+end
+
+
+def player_numbers(team_name)
+  jersey_numbers = []
+  game_hash.each do | home_or_away, team_value |
+    team_value[:players].each do | player |
+      if team_value[:team_name] == team_name
+        jersey_numbers << player[:number]
+      end
+    end  
+  end
+  jersey_numbers
+end
+
+
+def player_stats(player_name)
+  
+  game_hash.each do | home_or_away, team_value |
+    team_value.each do | team_info, information |
+      if team_info == :players
+        information.each_with_index do | player, array_index |
+          if player[:player_name] == player_name
+            return information[array_index]
+          end
+        end
+      end
+    end
+  end
+end
+
+
+def big_shoe_rebounds
+  rebounds = 0
+  largest_shoe = 0
+  game_hash.each do | home_or_away, team_value |
+    team_value[:players].each do | player |  
+      if player[:shoe] > largest_shoe
+        largest_shoe = player[:shoe]
+        rebounds = player[:rebounds]
+      end
+    end
+  end
+  rebounds
+end
+
+
+
+
+
+
+
+
+
