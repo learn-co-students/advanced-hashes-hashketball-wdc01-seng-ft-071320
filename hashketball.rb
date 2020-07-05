@@ -1,4 +1,7 @@
 # Write your code below game_hash
+require 'pry'
+require './hashketball.rb'
+
 def game_hash
   {
     home: {
@@ -126,4 +129,109 @@ def game_hash
   }
 end
 
-# Write code here
+
+
+def num_points_scored(player_name)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        data.each do |element|
+          if element[:player_name] == player_name
+            return element[:points]
+          end
+        end
+      end
+    end
+  end
+end
+
+
+#   n = 0
+#   game_hash.each do |location, team_data|
+# if team_data[:players][n][:player_name] == player_name
+#   binding.pry
+#   return team_data[:players][0][:points]
+#   n += 1
+#
+#   if value == player_name
+#     return
+#
+#   game_hash.each do |location, team_data|
+#     team_data.each do |attribute, data|
+
+# def team_colors(team_name)
+#
+#   return arry of the teams colors
+# end
+#
+#
+# def player_numbers(team_name)
+#   get_team_helper(team)[:players].map do |player| # or |key, value| if player is array
+#     player[:number] #or value[:number] =>this will return array of numbers
+#   end
+# end
+#   #return arry of jersey numbers of that team
+#
+#
+#
+# def shoe_size(player_name)
+#
+#   return shoe_size of that player
+# end
+#
+#
+# def team_colors(team_name)
+#
+#   return arry of the teams colors
+# end
+#
+#
+# def team_names
+#
+#   return array of team names
+# end
+#
+#
+# def player_numbers(team_name)
+#   get_team_helper(team)[:players].map do |player|
+#     player[:number]
+#   end
+# end
+#   #return arry of jersey numbers of that team
+#
+# def play_stats(player_name)
+#
+#   return hash of that player stats
+# end
+#
+#
+# def big_shoe_rebounds
+#
+#   return the number of rebounds associated with the player that has largest shoe size.
+# end
+
+# First, find the player with the largest shoe size
+# Then, return that player's number of rebounds
+# Remember to think about return values here.
+
+
+
+# def player_helper
+#   game_hash[:home][:players].merge(game_hash[:away][:players])
+# end
+#
+# def get_team_helper(team)
+#   case team
+#   when game_hash[:home][:team_name]
+#     game_hash[:home]
+#
+#   when game_hash[:away][:team_name]
+#     game_hash[:away]
+#   end
+# end
+#
+# def num_points_scored(player_name)
+#   binding.pry
+#   player_helper[:players][:points]
+#   binding.pry
+# end
