@@ -192,27 +192,6 @@ def player_numbers(team_name)
     end
 
 
-  # team_data.each do |attribute, data|
-  #   binding.pry
-  #   if attribute == team_name
-  #     binding.pry
-  #     data.ea do |element|
-  #       jersey_numbers << element[:number]
-  #       end
-
-  #       return jersey_numbers
-  # game_hash.each do |location, team_data|
-  #   team_data.each do |attribute, data|
-  #     if attribute == :players
-  #       data.each do |element|
-  #         if element[:player_name] == player_name
-  #           return element[:points]
-
-
-
-
-
-
 def play_stats(player_name)
   game_hash.each do |location, team_data|
     team_data.each do |attribute, data|
@@ -240,23 +219,18 @@ end
 # Remember to think about return values here.
 
 
-
-# def player_helper
-#   game_hash[:home][:players].merge(game_hash[:away][:players])
+# def player_numbers(team_name)
+# game_hash.each do |location, team_data|
+# team_data.each do |attribute, data|
+#   if attribute == team_name
+#     data.each do |element|
+#       jersey_numbers << element[:number]
+#       end
+#   return jersey_numbers
 # end
-#
-# def get_team_helper(team)
-#   case team
-#   when game_hash[:home][:team_name]
-#     game_hash[:home]
-#
-#   when game_hash[:away][:team_name]
-#     game_hash[:away]
-#   end
-# end
-#
-# def num_points_scored(player_name)
-#   binding.pry
-#   player_helper[:players][:points]
-#   binding.pry
-# end
+# game_hash.each do |location, team_data|
+#   team_data.each do |attribute, data|
+#     if attribute == :players
+#       data.each do |element|
+#         if element[:player_name] == player_name
+#           return element[:points]
