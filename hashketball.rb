@@ -146,18 +146,22 @@ def num_points_scored(player_name)
 end
 
 
-#   n = 0
-#   game_hash.each do |location, team_data|
-# if team_data[:players][n][:player_name] == player_name
-#   binding.pry
-#   return team_data[:players][0][:points]
-#   n += 1
-#
-#   if value == player_name
-#     return
-#
-#   game_hash.each do |location, team_data|
-#     team_data.each do |attribute, data|
+def shoe_size(player_name)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        data.each do |element|
+          if element[:player_name] == player_name
+            return element[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+
+
+
 
 # def team_colors(team_name)
 #
@@ -174,10 +178,7 @@ end
 #
 #
 #
-# def shoe_size(player_name)
-#
-#   return shoe_size of that player
-# end
+
 #
 #
 # def team_colors(team_name)
