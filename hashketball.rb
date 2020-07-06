@@ -192,23 +192,33 @@ def player_numbers(team_name)
     end
 
 
-def play_stats(player_name)
+def player_stats(team_name)
+  stats = {}
   game_hash.each do |location, team_data|
     team_data.each do |attribute, data|
+  binding.pry
       if attribute == :players
-        binding.pry
         data.each do |element|
           if element[:player_name] == player_name
             return element[:shoe]
-          end
-        end
-      end
-    end
-  end
 end
-#return hash of that player stats
 
 
+
+
+        #
+        #   game_hash.each do |location, team_data|
+        #     if team_data[:team_name] == team_name
+        # binding.pry
+        #         team_data[:players].each do |player|
+        # binding.pry
+        #           stats << player[]
+        #         end
+        #           return stats
+        #       end
+        #     end
+        #
+        #
 # def big_shoe_rebounds
 #
 #   return the number of rebounds associated with the player that has largest shoe size.
