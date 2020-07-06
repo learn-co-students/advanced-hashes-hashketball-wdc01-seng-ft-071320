@@ -1,4 +1,7 @@
 # Write your code below game_hash
+require 'pry'
+require './hashketball.rb'
+
 def game_hash
   {
     home: {
@@ -126,4 +129,134 @@ def game_hash
   }
 end
 
-# Write code here
+
+
+def num_points_scored(player_name)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        data.each do |element|
+          if element[:player_name] == player_name
+            return element[:points]
+          end
+        end
+      end
+    end
+  end
+end
+
+
+def shoe_size(player_name)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        data.each do |element|
+          if element[:player_name] == player_name
+            return element[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+
+
+def team_colors(team_name)
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == team_name
+      return team_data[:colors]
+      end
+    end
+  end
+
+
+def team_names
+  teams = []
+    game_hash.each do |location, team_data|
+      teams << team_data[:team_name]
+    end
+      return teams
+end
+
+
+def player_numbers(team_name)
+  jersey_numbers = []
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == team_name
+        team_data[:players].each do |player|
+          jersey_numbers << player[:number]
+          end
+          return jersey_numbers
+        end
+      end
+    end
+
+
+def player_stats(player_name)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |player|
+      if player[:player_name] == player_name
+        return player
+       end
+      end
+    end
+end
+
+
+def big_shoe_rebounds
+  shoe_size = 0
+  rebounds_num = 0
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        data.each do |element|
+          if element[:shoe] > shoe_size
+            shoe_size = element[:shoe]
+            rebounds_num = element[:rebounds]
+          end
+        end
+      end
+    end
+  end
+  return rebounds_num
+end
+
+
+
+# player[:shoe].values.max
+#     team_data.each do |attribute, data|
+#       if attribute == :players
+#         data.each do |element|
+#           if element[:shoe].value.max
+#       binding.pry
+#           end
+#         end
+#       end
+#     end
+#   end
+#   return element[:rebounds]
+# end
+
+#   return the number of rebounds associated with the player that has largest shoe size.
+# end
+
+# First, find the player with the largest shoe size
+# Then, return that player's number of rebounds
+# Remember to think about return values here.
+
+
+# def player_numbers(team_name)
+# game_hash.each do |location, team_data|
+# team_data.each do |attribute, data|
+#   if attribute == team_name
+#     data.each do |element|
+#       jersey_numbers << element[:number]
+#       end
+#   return jersey_numbers
+# end
+# game_hash.each do |location, team_data|
+#   team_data.each do |attribute, data|
+#     if attribute == :players
+#       data.each do |element|
+#         if element[:player_name] == player_name
+#           return element[:points]
