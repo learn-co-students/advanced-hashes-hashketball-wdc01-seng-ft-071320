@@ -161,51 +161,75 @@ def shoe_size(player_name)
 end
 
 
+def team_colors(team_name)
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == team_name
+      return team_data[:colors]
+      end
+    end
+  end
 
 
-# def team_colors(team_name)
-#
-#   return arry of the teams colors
-# end
-#
-#
-# def player_numbers(team_name)
-#   get_team_helper(team)[:players].map do |player| # or |key, value| if player is array
-#     player[:number] #or value[:number] =>this will return array of numbers
-#   end
-# end
-#   #return arry of jersey numbers of that team
-#
-#
-#
+def team_names
+  teams = []
+    game_hash.each do |location, team_data|
+      teams << team_data[:team_name]
+    end
+      return teams
+end
 
-#
-#
-# def team_colors(team_name)
-#
-#   return arry of the teams colors
-# end
-#
-#
-# def team_names
-#
-#   return array of team names
-# end
-#
-#
-# def player_numbers(team_name)
-#   get_team_helper(team)[:players].map do |player|
-#     player[:number]
-#   end
-# end
-#   #return arry of jersey numbers of that team
-#
-# def play_stats(player_name)
-#
-#   return hash of that player stats
-# end
-#
-#
+
+def player_numbers(team_name)
+  jersey_numbers = []
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == team_name
+        team_data[:players].each do |player|
+          jersey_numbers << player[:number]
+          end
+          return jersey_numbers
+        end
+      end
+    end
+
+
+  # team_data.each do |attribute, data|
+  #   binding.pry
+  #   if attribute == team_name
+  #     binding.pry
+  #     data.ea do |element|
+  #       jersey_numbers << element[:number]
+  #       end
+
+  #       return jersey_numbers
+  # game_hash.each do |location, team_data|
+  #   team_data.each do |attribute, data|
+  #     if attribute == :players
+  #       data.each do |element|
+  #         if element[:player_name] == player_name
+  #           return element[:points]
+
+
+
+
+
+
+def play_stats(player_name)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if attribute == :players
+        binding.pry
+        data.each do |element|
+          if element[:player_name] == player_name
+            return element[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+#return hash of that player stats
+
+
 # def big_shoe_rebounds
 #
 #   return the number of rebounds associated with the player that has largest shoe size.
