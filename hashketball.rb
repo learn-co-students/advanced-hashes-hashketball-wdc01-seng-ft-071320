@@ -126,4 +126,71 @@ def game_hash
   }
 end
 
+def num_points_scored(player_name)
+  game_hash.values.each do |team|  
+    team[:players].each do |player|   
+      if player.has_value?(player_name) then
+        return player[:points] 
+      end
+    end
+  end
+end  
+
+def shoe_size(player_name)
+  game_hash.values.each do |team|  
+    team[:players].each do |player|   
+      if player.has_value?(player_name) then
+        return player[:shoe] 
+      end
+    end
+  end
+end  
+
+def team_colors(team_name)
+  game_hash.values.each do |team|  
+      if team.has_value?(team_name) then
+        return team[:colors] 
+      end
+    end
+end  
+
+def team_names
+  return game_hash.values.map {|value| value[:team_name]}
+end
+
+def player_numbers(team_name)
+  playerArray = []
+  game_hash.values.each do |team|  
+      if team.has_value?(team_name) then
+        team[:players].each do |player|
+          playerArray.append(player[:number])
+        end
+      end
+    end
+  return playerArray
+end  
+
+def player_stats(player_name)
+  game_hash.values.each do |team|  
+    team[:players].each do |player|   
+      if player.has_value?(player_name) then
+        return player
+      end
+    end
+  end
+end  
+
+def big_shoe_rebounds
+  biggest_shoe = -1
+  rebounds = -1
+  game_hash.values.each do |team|
+    team[:players].each do |player|
+      if player[:shoe] > biggest_shoe
+        biggest_shoe = player[:shoe] 
+        rebounds = player[:rebounds] 
+      end
+    end
+  end
+  return rebounds
+end
 # Write code here
